@@ -1,0 +1,42 @@
+.container-div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  row-gap: 1%;
+  /* justify-content: space-between; */
+
+}
+
+
+.default-buttons {
+  display: flex;
+  flex-direction: row;
+  height: max-content;
+  width: 100%;
+  background-color: blueviolet;
+  column-gap: 1%;
+  align-items: center;
+  /* justify-content: center; */
+}
+.notes-area {
+  height: max-content;
+  width: 100%;
+  background-color: blueviolet;
+}
+.icon-area {
+  /* padding: 1%; */
+  width: 20%;
+  /* display: inline-block; */
+  justify-content: center;
+  text-align: center;
+  background-color: yellow;
+}
+.align-center {
+  text-align: center;
+  justify-self: center;
+}
+.text-area {
+  /* padding: 1%; */
+  background-color: yellowgreen;
+  width: 100%;
+}
