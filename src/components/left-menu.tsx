@@ -35,7 +35,7 @@ export default function LeftMenu() {
 						})
 					} */}
 			<div className="default-buttons">
-				<div className="icon-area"> <DynamicIcon className={commonStyle.center} name="camera" color="red" size={14} /></div>
+				<div className="icon-area"> <DynamicIcon className={commonStyle.center} name="camera" color={"#111111"} size={14} /></div>
 				<div className="text-area"> <p>Text</p></div>
 			</div>
 			<div className="default-buttons">
@@ -43,7 +43,7 @@ export default function LeftMenu() {
 				<div className="text-area"> <p>Text</p></div>
 			</div>
 
-			<div className="notes-area"></div> 
+			<div className="notes-area"></div>
 		</div>
 	)
 }
