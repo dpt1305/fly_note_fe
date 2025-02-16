@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  height: 100vh;
+}
+
+.left-side {
+  background-color: red;
+  width: 200px;
+  padding: 2%;
+}
+
+.right-side {
+  background-color: blue;
+  width: 100%;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.upper-menu {
+  width: 100wh;
+  height: 3%;
+  background-color: aqua;
+
+}
+.content-area {
+  background-color: yellow;
+  height: 100%;
+}
+

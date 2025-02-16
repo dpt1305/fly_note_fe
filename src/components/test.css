@@ -1,0 +1,8 @@
+.text-red {
+  color: red;
+	text-decoration: line-through;
+}
+
+.text-black {
+	color: black
+}
