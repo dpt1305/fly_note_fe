@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@stomp/stompjs": "^7.0.0",
     "lucide-react": "^0.475.0",
+    "net": "^1.0.2",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-use-websocket": "^4.13.0",
     "sockjs-client": "^1.6.1",
     "stompjs": "^2.3.3"
   },
@@ -21,6 +24,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/sockjs-client": "^1.5.4",
+    "@types/stompjs": "^2.3.9",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
     "postcss": "^8",
