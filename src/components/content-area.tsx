@@ -1,6 +1,6 @@
 'use client'
 
-import style from '@components/content-area.module.css';
+import style from '@/components/content-area.module.css';
 import { useEffect, useState } from 'react';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
@@ -11,6 +11,8 @@ export default function ContentArea() {
 	const [socketUrl, setSocketUrl] = useState('ws://localhost:8080/ws');
 	const [socketClient, setSocketClient] = useState<Stomp.Client>();
 	const [receivedMsg, setReceivedMsg] = useState(null);
+	const [roomId, setRoomId] = useState<string>('');
+	const [status, setStatus] = useState<boolean>(false);
 
 	const [note, setNote] = useState<string>('');
 
@@ -28,11 +30,11 @@ export default function ContentArea() {
 
 	const onConnected = () => {
 		console.log("Connected 1111111111");
-		if (socketClient) {
-			socketClient.subscribe('/topic/notes/1111', onMessageReceived);
-		}
+		// if (socketClient) {
+		// 	socketClient.subscribe('/topic/notes/1111', onMessageReceived);
+		// }
 	}
-	
+
 	const onError = (error: any) => {
 		console.log("Error: ", error);
 	}
@@ -50,18 +52,38 @@ export default function ContentArea() {
 	const onClickBtn = () => {
 		const msg = {
 			type: "UPDATE",
-			noteIdd: "1111",
+			noteIdd: roomId,
 			content: note,
 			timestamp: "2021-09-09T12:00:00"
 		}
 
 		if (socketClient) {
-			socketClient.send("/app/notes/1111", {}, JSON.stringify(msg));
+			socketClient.send(`/topic/notes/${roomId}`, {}, JSON.stringify(msg));
+		}
+	}
+
+	const onRoomIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setRoomId(e.target.value);
+		// fnc(e.target.value);
+	}
+
+	const onClickBtnRoomId = () => {
+		if (socketClient) {
+			socketClient.subscribe(`/topic/notes/${roomId}`, onMessageReceived);
+			setStatus(true);
 		}
 	}
 
 	return (
 		<div>
+			<p>Status: {status == true ? `Connected to ${roomId}` : "Disconnected"}</p>
+			<input
+				type="text"
+				value={roomId}
+				onChange={onRoomIdChange}
+			/>
+			<button onClick={onClickBtnRoomId} className={status == true ? style.disable : style.enable} >Connect</button>
+
 			<p>Default: {receivedMsg == null ? "Hello" : receivedMsg} </p>
 
 			<input
